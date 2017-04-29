@@ -1,0 +1,17 @@
+dist: trusty
+language: c
+before_install:
+- sudo apt-get -qq update
+- sudo apt-get install -y gcc make libpcap-dev libnl-3-dev libnl-genl-3-dev libdbus-1-dev
+script: 
+    - make
+    - mv broadcast-relay broadcast-relay-x86_64
+deploy:
+  provider: releases
+  api_key:
+    secure: Kq9z5e1QILZKwEXMC6drXCALNG0HAxZSJG15IdckkS4v5pnAOxm99jYwOfATT4D/ePJGw1a7I1Q58o6E+VmXf+rSMXKEym8+xpU+lWSRMCZ6aUrjrP3V724LHtUt7BzlQ7OHYKE7Pi7t0aX72JY1lKLFqn6XtOMri41+6SHq/2t1a242A/cCylNtiugp4Csjgg33ZA0T7X2Xq1HgdlIy/+eZ+sTkawHcLcoW76BYOhnCXhNs1dxC9STZ9AtK0pLTCEBBE8S/V6mFSHA5l/P9obNhChTInEBIgTzftRM5m2AzZ0KbEHyojv2dUGLYF71vC/TTlfI3bNwULgcXPdJfv7AG+edhI4R1x25RPxUOuVX9n1AqQ7jx7g50UoBvGtnC3/k2eKTQyLZvQGlcUf9KBjk+8tbIl8Wvb4yBSYqsxSfif8XwbY49xmj7wUwKt9N2j2hxRbsSNCYx0byOIBQRhrxpOb5fU2ZxNPyo4LQ21vSGAbL7v1Afy7J7VEFKBmXu0GpTg11CYdijJE5dYFUoi2BYQk0OccX0LmjQPEXa+b5h0GdJzd2DF1l5XOlQtbd5JqkAVmrCYm3/e7kk9bHOhCv21hO8wPzr+KmSIl3m3++dH8wIRbnxTNy3LKXvEvsbcTSir0WOvL98UYyMZ0N9xk8RbpWFm+LGFrSRyBHZJ8U=
+  file: broadcast-relay-x86_64
+  skip_cleanup: true
+  on:
+    repo: Golit/broadcast-relay
+    tags: true
