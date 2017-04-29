@@ -109,6 +109,7 @@ static int relay_packet(const u_char* packet, u_char *args) {
     uint16_t len = ntohs(ip->ip_len) + sizeof(struct ether_header);
     
     memcpy(etherhdr->ether_shost, srcmac, 6);
+    memset(etherhdr->ether_dhost, 0xFF, 6);     // we want to broadcast
     
     if(sendto(raw_socket, packet2, (len<60?60:len), 0, (const struct sockaddr*) &saddr_ll, sizeof(struct sockaddr_ll)) < 0) {
         fprintf(stderr, "Error sending: %s\n", strerror(errno));
