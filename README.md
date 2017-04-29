@@ -18,7 +18,7 @@ chmod +x /usr/local/bin/broadcast-relay
 cat > /etc/systemd/system/broadcast-relay@.service <<EOF
 [Unit]
 Description=Relay For Limited Broadcasts On Interface %I
-After=network.target system-openvpn.slice
+After=openvpn@server.service
 
 [Service]
 Type=simple
