@@ -127,9 +127,9 @@ static int relay_packet(const u_char* packet, u_char *args) {
 static void handle_udp (u_char *args, const u_char* packet, const u_char* udp_data, int has_udp_header) {
     if(has_udp_header) {
         struct udphdr *udp = (struct udphdr*) udp_data;
-        uint16_t sport = ntohs(udp->source);
-        uint16_t dport = ntohs(udp->dest);
-        uint16_t len = ntohs(udp->len);
+        uint16_t sport = ntohs(udp->uh_sport);
+        uint16_t dport = ntohs(udp->uh_dport);
+        uint16_t len = ntohs(udp->uh_ulen);
         uint16_t length = (len - sizeof(struct udphdr));
         
         LOG_INFO("UDP SRC: %d DEST: %d LEN: %d DLEN: %d", sport, dport, len, length);
