@@ -1,6 +1,6 @@
 # broadcast-relay [![Build Status](https://travis-ci.org/Golit/broadcast-relay.svg?branch=master)](https://travis-ci.org/Golit/broadcast-relay)
 
-This utility will relay limited broadcasts (255.255.255.255) from an interface to another interface (or on the same interface). You can use this utility for VPN servers to forward limited broadcast. The interface needs to be in bridged mode.
+This utility will relay limited broadcasts (255.255.255.255) from an interface to another interface (or on the same interface). You can use this utility for VPN servers to forward limited broadcast.
 
 
 ## Using on Debain Jessie
@@ -35,6 +35,13 @@ systemctl start broadcast-relay@tap0
 ```sh
 broadcast-relay [-i <interface with broadcasts>] [-o <interface where to relay broadcasts>] [-h] [-l <loglevel>]
 broadcast-relay --interface-in tap0 --interface-out tap0
+```
+
+## Compile on Alpine Linux
+```sh
+apk add gcc git make libpcap-dev libc-dev libnl3-dev dbus-dev linux-headers
+make
+cp broadcast-relay /usr/local/bin/
 ```
 
 ## Contribution
