@@ -1,8 +1,8 @@
 dist: trusty
 language: c
 before_install:
-- sudo apt-get -qq update
-- sudo apt-get install -y gcc make libpcap-dev libnl-3-dev libnl-genl-3-dev libdbus-1-dev
+    - sudo apt-get -qq update
+    - sudo apt-get install -y gcc make libpcap-dev libnl-3-dev libnl-genl-3-dev libdbus-1-dev
 script: 
     - make
     - mv broadcast-relay broadcast-relay-x86_64
