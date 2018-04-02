@@ -291,7 +291,7 @@ int main(int argc, char* argv[]) {
     
     /* open device for reading */
 //     handle = pcap_open_live(interface, BUFSIZ, 1, -1, errbuf);
-    handle = pcap_open_live(interface, BUFSIZ, 0, -1, errbuf);
+    handle = pcap_open_live(interface, BUFSIZ, 0, 1000, errbuf);
     if(handle == NULL) {
         fprintf(stderr, "Couldn't open device %s: %s\n", interface, errbuf);
         exit(1);
